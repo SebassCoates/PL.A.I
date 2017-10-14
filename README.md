@@ -1,1 +1,4 @@
-# PL.AI
+# PL.ai
+##### AI powered music improvisation
+
+
