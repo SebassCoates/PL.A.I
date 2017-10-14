@@ -112,29 +112,31 @@ for filename in filenames:
         continue
     
     complete_notes = []
-    tempo = parse_notes(filename, complete_notes)
+    try:
+        tempo = parse_notes(filename, complete_notes)
 
-    # sort by start_time
-    from operator import itemgetter
-    complete_notes.sort(key=itemgetter(1))
-    
-    next_measure = 2 * tempo
-    
-    for sn in complete_notes:
-        if (sn.start_time > next_measure):
-            if (sn.mode == 'major'):
-                fmajor.write("\n")
-            else:
-                fminor.write("\n")
-            next_measure += 2 * tempo
-        value = (int) (2 / (sn.duration / tempo))
-        if (value < 50):
-            code_word = str(sn.note) + ":" + str(value)
-            if (sn.mode == 'major'):
-                fmajor.write(code_word + ' ')
-            elif (sn.mode == 'minor'):
-                fminor.write(code_word)
-
+        # sort by start_time
+        from operator import itemgetter
+        complete_notes.sort(key=itemgetter(1))
+        
+        next_measure = 2 * tempo
+        
+        for sn in complete_notes:
+            if (sn.start_time > next_measure):
+                if (sn.mode == 'major'):
+                    fmajor.write(". ")
+                else:
+                    fminor.write(". ")
+                next_measure += 2 * tempo
+            value = (int) (2 / (sn.duration / tempo))
+            if (value < 50):
+                code_word = str(sn.note) + ":" + str(value)
+                if (sn.mode == 'major'):
+                    fmajor.write(code_word + ' ')
+                elif (sn.mode == 'minor'):
+                    fminor.write(code_word)
+    except:
+        KeyError
 
 
 fmajor.close()
