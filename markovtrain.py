@@ -74,8 +74,8 @@ def generateOutput(json_file):
         f = open(json_file, 'r')
         json_filetext = f.read()
 
-        loaded_model = markovify.Text.from_json(json_filetext)
-        print(loaded_model.make_sentence())
+        loaded_model = markovify.NewlineText.from_json(json_filetext)
+        print(loaded_model.make_sentence(test_output = False))
 
 """MAIN FUNCTION - EXECUTED WHEN SCRIPT RUNS"""
 def main():
