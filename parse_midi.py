@@ -104,8 +104,10 @@ Complete_node = namedtuple("Complete_node", "note start_time duration mode")
 fmajor = open('major.mff', 'w')
 fminor = open('minor.mff', 'w')
 
+counter = 0
 for filename in filenames:
-    
+    print counter
+    counter += 1
     if (filename == 'parse_midi.py'):
         continue
     
