@@ -11,6 +11,8 @@ mid.tracks.append(track)
 
 #track.append(Message('program_change', program=12, time=0))
 track.append(Message('note_on', note=64, velocity=64, time=1))
+track.append(Messade('note_on', note=20, velocity=64, 
+
 track.append(Message('note_on', note=64, velocity=0, time=1))
 
 track.append(Message('note_on', note=68, velocity=64, time=1))

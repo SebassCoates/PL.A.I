@@ -9,12 +9,6 @@ import mido
 from mido import MidiFile
 
 
-#class ChannelList(object):
-
- #   def__init__(self, num, notes):
-      #  self.num = num
-      #  self.notes = notes
-
 def parse_notes(filename, complete_notes):
     notes = MidiFile(filename)
     
@@ -23,8 +17,6 @@ def parse_notes(filename, complete_notes):
     root = 0
 
     mode = 'major'
-    
-
 
     note_timer = -1
     note_value = 128
@@ -119,9 +111,7 @@ for filename in filenames:
         next_measure = 8 * tempo
         
         for sn in complete_notes:
-            print("orig")
             value = (int) (2 / (sn.duration / tempo))
-            print value
             i = 0
             if (value == 0):
                 continue
@@ -129,8 +119,6 @@ for filename in filenames:
                 i += 1
             i -= 1
             value = 1 << i
-            print("quantized")
-            print value
             if (value < 50):
                 code_word = str(sn.note) + "x" + str(value)
                 if (sn.mode == 'major'):
