@@ -8,6 +8,7 @@ import mido
 
 from mido import MidiFile
 
+#this is a comment
 
 def parse_notes(filename, complete_notes):
     notes = MidiFile(filename)
@@ -17,9 +18,13 @@ def parse_notes(filename, complete_notes):
     root = 0
 
     mode = 'major'
+    
+    started_notes = [];
 
-    note_timer = -1
-    note_value = 128
+    from collections import namedtuple
+    Started_node = namedtuple("Started_node", "channel note start_time")
+
+    rest_timer = -1
     
     time = 0
     for msg in notes:
@@ -65,20 +70,24 @@ def parse_notes(filename, complete_notes):
 
         try:
             if (msg.velocity != 0):
-                if (note_timer > 0):
-                    cn = Complete_node(note_value, note_timer, time - note_timer, mode)
+                if (rest_timer > 0):
+                    cn = Complete_node(128, rest_timer, time - rest_timer, mode)
                     if (cn.duration != 0):
                         complete_notes.append(cn)
-                note_timer = time
-                note_value = msg.note - root
+                    rest_timer = -1
+                if (msg.note - root > 55):
+                    sn = Started_node(msg.channel, msg.note - root, time)
+                    started_notes.append(sn)
             else:
-                if (msg.note - root == note_value):
-                    cn = Complete_note(note_value, note_timer, timer - note_timer, mode)
-                    if (cn.duration != 0):
-                        complete_notes.append(cn)
-                    note_value = 128
-                    note_timer = time
-                        
+                for sn in started_notes:
+                    if (sn.channel == msg.channel and sn.note == msg.note - root):
+                        cn = Complete_node(sn.note, sn.start_time, time - sn.start_time, mode)
+                        if (cn.duration != 0):
+                            complete_notes.append(cn)
+                        started_notes.remove(sn)
+                        if (len(started_notes) == 0):
+                            rest_timer = time
+                        break
 
         except:
             AttributeError
@@ -96,7 +105,10 @@ Complete_node = namedtuple("Complete_node", "note start_time duration mode")
 fmajor = open('major.mff', 'w')
 fminor = open('minor.mff', 'w')
 
+counter = 0
 for filename in filenames:
+    print counter
+    counter += 1
     if (filename == 'parse_midi.py'):
         continue
     
