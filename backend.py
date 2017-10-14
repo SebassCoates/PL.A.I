@@ -17,7 +17,7 @@ def initialize():
         print(minor_model)
         print(major_model)
 
-def getNodeEvent(note):
+def getNoteEvent(note):
         curr_time = int(round(time.time() * 1000))
         to_return = None;
         if curr_time - last_time < 50:
