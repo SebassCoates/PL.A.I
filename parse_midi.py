@@ -134,7 +134,7 @@ for filename in filenames:
                 if (sn.mode == 'major'):
                     fmajor.write(code_word + ' ')
                 elif (sn.mode == 'minor'):
-                    fminor.write(code_word)
+                    fminor.write(code_word + ' ')
     except:
         KeyError
 
