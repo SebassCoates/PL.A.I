@@ -18,6 +18,8 @@ def parse_notes(filename, complete_notes):
     root = 0
 
     mode = 'major'
+
+    channels = []
     
     started_notes = [];
 
@@ -70,20 +72,26 @@ def parse_notes(filename, complete_notes):
 
         try:
             if (msg.velocity != 0):
-                if (rest_timer > 0):
-                    cn = Complete_node(128, rest_timer, time - rest_timer, mode)
-                    if (cn.duration != 0):
-                        complete_notes.append(cn)
-                    rest_timer = -1
                 if (msg.note - root > 55):
                     sn = Started_node(msg.channel, msg.note - root, time)
                     started_notes.append(sn)
+                elif (rest_timer > 0):
+                    cn = Complete_node(128, rest_timer, time - rest_timer, mode)
+                    if (cn.duration != 0):
+                        complete_notes[:].append(cn)
+                    rest_timer = -1
             else:
                 for sn in started_notes:
                     if (sn.channel == msg.channel and sn.note == msg.note - root):
                         cn = Complete_node(sn.note, sn.start_time, time - sn.start_time, mode)
                         if (cn.duration != 0):
-                            complete_notes.append(cn)
+                            try:
+                                index = channels.index(msg.channel)
+                                complete_notes[index].append(cn)
+                            except:
+                                channels.append(msg.channel)
+                                complete_notes.append([])
+                                complete_notes[-1].append(cn)
                         started_notes.remove(sn)
                         if (len(started_notes) == 0):
                             rest_timer = time
@@ -105,10 +113,7 @@ Complete_node = namedtuple("Complete_node", "note start_time duration mode")
 fmajor = open('major.mff', 'w')
 fminor = open('minor.mff', 'w')
 
-counter = 0
 for filename in filenames:
-    print counter
-    counter += 1
     if (filename == 'parse_midi.py'):
         continue
     
@@ -116,33 +121,38 @@ for filename in filenames:
     try:
         tempo = parse_notes(filename, complete_notes)
 
-        # sort by start_time
-        from operator import itemgetter
-        complete_notes.sort(key=itemgetter(1))
         
         next_measure = 8 * tempo
-        
-        for sn in complete_notes:
-            value = (int) (2 / (sn.duration / tempo))
-            i = 0
-            if (value == 0):
-                continue
-            while (value >= (1 << i)):
-                i += 1
-            i -= 1
-            value = 1 << i
-            if (value < 50):
-                code_word = str(sn.note) + "x" + str(value)
-                if (sn.mode == 'major'):
-                    fmajor.write(code_word + ' ')
-                elif (sn.mode == 'minor'):
-                    fminor.write(code_word + ' ')
-            if (sn.start_time > next_measure):
-                if (sn.mode == 'major'):
-                    fmajor.write("\n")
-                else:
-                    fminor.write("\n")
-                next_measure += 8 * tempo
+       
+
+        for channel in complete_notes:
+            from operator import itemgetter
+            channel.sort(key=itemgetter(1))
+            for cn in channel:
+
+                # sort by start_time
+
+                value = (int) (2 / (cn.duration / tempo))
+                i = 0
+                if (value == 0):
+                    continue
+                while (value >= (1 << i)):
+                    i += 1
+                i -= 1
+                value = 1 << i
+                if (value < 50):
+                    code_word = str(cn.note) + "x" + str(value)
+                    if (cn.mode == 'major'):
+                        fmajor.write(code_word + ' ')
+                    elif (cn.mode == 'minor'):
+                        fminor.write(code_word + ' ')
+                if (cn.start_time > next_measure):
+                    if (cn.mode == 'major'):
+                        fmajor.write("\n")
+                    else:
+                        fminor.write("\n")
+                    next_measure += 8 * tempo
+
     except:
         KeyError
 
