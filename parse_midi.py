@@ -119,15 +119,9 @@ for filename in filenames:
         from operator import itemgetter
         complete_notes.sort(key=itemgetter(1))
         
-        next_measure = 2 * tempo
+        next_measure = 16 * tempo
         
         for sn in complete_notes:
-            if (sn.start_time > next_measure):
-                if (sn.mode == 'major'):
-                    fmajor.write(". ")
-                else:
-                    fminor.write(". ")
-                next_measure += 2 * tempo
             value = (int) (2 / (sn.duration / tempo))
             if (value < 50):
                 code_word = str(sn.note) + ":" + str(value)
@@ -135,6 +129,12 @@ for filename in filenames:
                     fmajor.write(code_word + ' ')
                 elif (sn.mode == 'minor'):
                     fminor.write(code_word + ' ')
+            if (sn.start_time > next_measure):
+                if (sn.mode == 'major'):
+                    fmajor.write(". ")
+                else:
+                    fminor.write(". ")
+                next_measure += 16 * tempo
     except:
         KeyError
 
