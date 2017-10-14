@@ -1,0 +1,1 @@
+{"parsed_sentences": [["this", "is", "a", "test", "file", "."]], "state_size": 2, "chain": "[[[\"test\", \"file\"], {\".\": 1}], [[\"a\", \"test\"], {\"file\": 1}], [[\"this\", \"is\"], {\"a\": 1}], [[\"file\", \".\"], {\"___END__\": 1}], [[\"___BEGIN__\", \"this\"], {\"is\": 1}], [[\"___BEGIN__\", \"___BEGIN__\"], {\"this\": 1}], [[\"is\", \"a\"], {\"test\": 1}]]"}

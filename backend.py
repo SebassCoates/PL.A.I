@@ -27,7 +27,6 @@ def getNoteEvent(note):
                         del queue[:]
 
         else: 
-                to_return = determinechord(queue)
                 del queue[:]
 
         last_time = curr_time
