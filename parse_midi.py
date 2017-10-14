@@ -124,7 +124,7 @@ for filename in filenames:
         for sn in complete_notes:
             value = (int) (2 / (sn.duration / tempo))
             if (value < 50):
-                code_word = str(sn.note) + ":" + str(value)
+                code_word = str(sn.note) + "x" + str(value)
                 if (sn.mode == 'major'):
                     fmajor.write(code_word + ' ')
                 elif (sn.mode == 'minor'):
