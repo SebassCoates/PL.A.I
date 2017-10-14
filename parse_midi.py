@@ -8,6 +8,8 @@ import mido
 
 from mido import MidiFile
 
+#this is a comment
+
 def parse_notes(filename, complete_notes):
     notes = MidiFile(filename)
 
