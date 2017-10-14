@@ -22,6 +22,10 @@ def getNoteEvent(note):
         to_return = None;
         if curr_time - last_time < 50:
                 queue.append(note.note)
+                if len(queue) == 3:
+                        to_return = determinechord(queue)
+                        del queue[:]
+
         else: 
                 to_return = determinechord(queue)
                 del queue[:]
