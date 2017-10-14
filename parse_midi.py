@@ -131,9 +131,9 @@ for filename in filenames:
                     fminor.write(code_word + ' ')
             if (sn.start_time > next_measure):
                 if (sn.mode == 'major'):
-                    fmajor.write(". ")
+                    fmajor.write("\n")
                 else:
-                    fminor.write(". ")
+                    fminor.write("\n")
                 next_measure += 16 * tempo
     except:
         KeyError
