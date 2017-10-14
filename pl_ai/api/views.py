@@ -12,13 +12,8 @@ from rest_framework import status
 
 
 
-class CreateView(generics.ListCreateAPIView):
-    queryset = Note.objects.all()
-    serializer_class = NoteSerializer
 
-    def perform_create(self, serializer):
-        serializer.save()
-
+# Handles api calls to IPADDRESS/notes/
 @api_view(['GET','POST'])
 def note_list(request):
     if request.method == 'GET':
