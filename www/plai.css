@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.hero {
+	background-color: aqua;
+	height: 80vh;
+	width: 100vw;
+	background-image: url('Hero_ImageAsset3.jpg');
+	background-size: cover;
+
+}
+
+.hero h1 {
+	font-family: 'raconteur_nfregular', Arial, sans-serif;
+	color: white;
+	text-align: center;
+	font-size: 25em;
+	padding-top: 10%;
+}
+
+@font-face {
+	font-family: 'raconteur_nfregular';
+	src: url('./webfontkit/raconteurnf-webfont.woff2') format('woff2'),
+		 url('./webfontkit/raconteurnf-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+.Raleway {
+	margin-top: 30px;
+	font-size: 3em;
+	font-family: Raleway, sans-serif;
+}
+
+.second {
+	height: 300px;
+	font-size: large;
+	font-family: 'raconteur_nfregular', Arial, sans-serif;
+
+}
+
+
+.plai_along {
+	background-color: #14163d;
+	height: 500px;
+	text-align: center;
+	color: white;
+}
+
+.plai_along img {
+	height: 200px;
+	margin-top: 15%;
+}
+
+.plai_fromfile {
+	background-color: #f7941d;
+	height: 500px;
+	text-align: center;
+	color: white;
+}
+
+.plai_fromfile img{
+	height: 250px;
+	margin-top: 10%;
+}
+
+

@@ -1,5 +1,7 @@
 import markovify
 import time
+from mido import Message, MidiFile, MidiTrack
+import  random as rand
 
 queue = []
 
@@ -13,15 +15,15 @@ g = open("minor.json", 'r')
 minor_filetext = g.read()
 minor_model = markovify.NewlineText.from_json(minor_filetext)
 
-def initialize():
-        print(minor_model)
-        print(major_model)
-
 def getNoteEvent(note):
+        global last_time
+
+        note = int(note)
+
         curr_time = int(round(time.time() * 1000))
         to_return = None;
-        if curr_time - last_time < 50:
-                queue.append(note.note)
+        if curr_time - last_time < 500:
+                queue.append(note)
                 if len(queue) == 3:
                         to_return = determinechord(queue)
                         del queue[:]
@@ -32,11 +34,50 @@ def getNoteEvent(note):
         last_time = curr_time
         return to_return
 
-def generateOutput(ismajor):
+def generateOutput(chord_string):
+        output = []
+        chord_shift = 0
+        if chord_string != "":
+                ismajor = chord_string.split(':')[1]
+                chord_shift = chord_string.split(':')[0]
         if ismajor:
-                return(major_model.make_sentence(test_output = False))
+                output = (major_model.make_sentence(test_output = False)).split()
+        else:
+                output = (minor_model.make_sentence(test_output = False)).split()
 
-        return(minor_model.make_sentence(test_output = False))
+        mid = MidiFile()
+        track = MidiTrack()
+        counter = 0
+        numskips = rand.randint(len(output) / 4, 3 * len(output) / 4)
+        print("NUM SKIPS IS " + str(numskips))
+        print("CHORD SHIFT IS " + str(chord_shift))
+        for note in output:
+                try:
+                        (note_value, duration) = note.split('x')
+                except:
+                        continue
+                if counter < numskips:
+                        counter = counter + 1
+                        continue
+
+                track.append(Message('program_change', program=12, time=0))
+                if int(note_value) + int(chord_shift) > 127:
+                        track.append(Message('note_on', note=0, velocity=0, time=0))
+                        track.append(Message('note_off', note=0, velocity=0, time= 0/int(duration)))
+                else:
+                        track.append(Message('note_on', note=int(note_value) + int(chord_shift), velocity=100, time=0))
+                        track.append(Message('note_off', note=int(note_value) + int(chord_shift), velocity=100, time= 650/int(duration))) 
+
+                counter = counter + 1
+                if counter >= 25 + numskips:
+                        print("breaking")
+                        break;
+
+        mid.tracks.append(track)
+
+        print("Saving improv.mid")
+        print(mid.length)
+        mid.save("www/improv.mid")
 
 def determinechord(notes_list):
         targets = [3, 4, 7, 10, 11]
