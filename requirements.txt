@@ -25,3 +25,4 @@ Werkzeug==0.12.2
 zope.interface==4.4.2
 gunicorn==19.7.1
 markovify==0.7.1
+mido==1.2.8
