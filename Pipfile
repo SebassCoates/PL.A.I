@@ -1,0 +1,18 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+
+[packages]
+
+flask = "*"
+flask_socketio = "*"
+flask_cors = "*"
+gevent = "*"
+markovify = "*"
+
+
+[requires]
+
+python_version = "2.7"
