@@ -7,6 +7,8 @@ import os
 queue = []
 mid = MidiFile()
 
+chordCount = 0
+
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 last_time = 0
@@ -86,8 +88,8 @@ def generateOutput(chord_string):
         if not os.path.exists("app/tmp"):
             os.makedirs("app/tmp")
 
-
-        mid.save("app/tmp/improv.mid")
+        chordCounter += 1
+        mid.save("app/tmp/improv.mid" + str(chordCount))
         print "generated midi"
 
 def determinechord(notes_list):
