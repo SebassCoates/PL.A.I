@@ -44,7 +44,7 @@ def processNote():
 
 @app.route('/improv.mid')
 def renderMidi():
-	return send_from_directory('improv.mid', 'app/tmp')
+	return send_from_directory('improv.mid', APP_ROOT + '/tmp')
 
 if __name__ == '__main__':
     socketio.run(app, debug=False, host='0.0.0.0', port=8000)
