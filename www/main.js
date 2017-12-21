@@ -1,5 +1,5 @@
 var midi, data;
-SERVERIP = "http://127.0.0.1:8000";
+SERVERIP = "plai.herokuapp.com";
 
 function onLoad(){ 
     if (navigator.requestMIDIAccess) {
