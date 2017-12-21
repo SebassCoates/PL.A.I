@@ -44,6 +44,11 @@ def processNote():
 
 @app.route('/improv.mid')
 def renderMidi():
+        print "sending midi file"
+        if os.path.exists('app/tmp/improv.mid'):
+            print "valid path for midi file"
+        else:
+            print "invalid path for midi file"
 	return send_from_directory('improv.mid', APP_ROOT + '/tmp')
 
 if __name__ == '__main__':
