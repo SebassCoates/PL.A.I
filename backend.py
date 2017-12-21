@@ -82,7 +82,12 @@ def generateOutput(chord_string):
 
         print("Saving improv.mid")
         print(mid.length)
-        mid.save("tmp/improv.mid")
+        
+        if not os.path.exists("app/tmp"):
+            os.makedirs("app/tmp")
+
+
+        mid.save("app/tmp/improv.mid")
         print "generated midi"
 
 def determinechord(notes_list):
