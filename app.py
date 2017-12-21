@@ -17,7 +17,6 @@ from flask_cors import CORS
 import backend
 import json
 
-chordCount = 0
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 # this directory contains the projects that can be accessed by the user
@@ -59,15 +58,12 @@ def processNote():
 
 @app.route('/improv.mid', methods=["GET"])
 def renderMidi():
-        global chordCount 
-        chordCount += 1
-        print str(chordCount)
         print "sending midi file"
-        if os.path.exists('app/tmp/improv.mid' + str(chordCount)):
+        if os.path.exists('app/tmp/improv.mid'):
             print "valid path for midi file"
         else:
             print "invalid path for midi file"
-	return send_file('app/tmp/improv.mid' + str(chordCount))
+	return send_file('app/tmp/improv.mid')
 
 if __name__ == '__main__':
     socketio.run(app, debug=False, host='0.0.0.0', port=8000)

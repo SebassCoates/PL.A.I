@@ -7,7 +7,6 @@ import os
 queue = []
 mid = MidiFile()
 
-chordCount = 0
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -41,7 +40,6 @@ def getNoteEvent(note):
         return to_return
 
 def generateOutput(chord_string):
-        global chordCount
         print "generating output"
         output = []
         chord_shift = 0
@@ -91,7 +89,7 @@ def generateOutput(chord_string):
             os.makedirs("app/tmp")
 
         chordCount += 1
-        mid.save("app/tmp/improv.mid" + str(chordCount))
+        mid.save("app/tmp/improv.mid")
         print "generated midi"
 
 def determinechord(notes_list):
