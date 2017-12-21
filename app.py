@@ -42,7 +42,7 @@ def processNote():
     return ""
 
 
-@app.route('/improv.mid')
+@app.route('/improv.mid', methods=["GET"])
 def renderMidi():
         print "sending midi file"
         if os.path.exists('app/tmp/improv.mid'):
