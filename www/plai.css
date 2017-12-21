@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 }
-
+/*
 .hero {
 	background-color: aqua;
 	height: 100vh;
@@ -10,7 +10,7 @@
 	background-image: url('Hero_ImageAsset3.svg');
 	background-size: cover;
 
-}
+}*/
 
 .hero h1 {
 	font-family: 'raconteur_nfregular', Arial, sans-serif;
