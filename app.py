@@ -3,7 +3,7 @@
 # purp: to create a full user-responsive, web server that can run various programs off several platforms including LEGO EV3
 # last updated: by Ahmed Gado, D. Nguyen, J. Basso, Kevin Destin, Donna Chen
 
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory, send_file
 from time import sleep
 from gevent import monkey
 monkey.patch_all()
