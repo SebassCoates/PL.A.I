@@ -44,9 +44,6 @@ def processNote():
 
 @app.route('/improv.mid')
 def renderMidi():
-	root_dir = os.path.dirname(os.getcwd())
-
-	#app = Flask(__name__, static_url_path='')
 	return send_from_directory('improv.mid', 'tmp')
 
 if __name__ == '__main__':
