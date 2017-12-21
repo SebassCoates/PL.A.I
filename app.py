@@ -46,11 +46,9 @@ def processNote():
 @app.route('/improv.mid')
 def renderMidi():
 	root_dir = os.path.dirname(os.getcwd())
-   	return mid 
 
 	#app = Flask(__name__, static_url_path='')
-	return app.send_static_file('tmp/improv.mid')
-	#return send_from_directory('improv.mid', './')
+	return send_from_directory('improv.mid', 'tmp')
 
 if __name__ == '__main__':
     socketio.run(app, debug=False, host='0.0.0.0', port=8000)
