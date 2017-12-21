@@ -46,6 +46,7 @@ def processNote():
 
 @app.route('/improv.mid', methods=["GET"])
 def renderMidi():
+        global chordCount 
         chordCount += 1
         print "sending midi file"
         if os.path.exists('app/tmp/improv.mid' + str(chordCount)):

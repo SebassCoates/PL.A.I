@@ -41,6 +41,7 @@ def getNoteEvent(note):
         return to_return
 
 def generateOutput(chord_string):
+        global chordCount
         print "generating output"
         output = []
         chord_shift = 0
@@ -51,6 +52,7 @@ def generateOutput(chord_string):
                 output = (major_model.make_sentence(test_output = False)).split()
         else:
                 output = (minor_model.make_sentence(test_output = False)).split()
+        
 
         mid = MidiFile()
         track = MidiTrack()
