@@ -6,6 +6,8 @@ import  random as rand
 queue = []
 mid = MidiFile()
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 last_time = 0
 
 f = open("major.json", 'r')
@@ -79,7 +81,7 @@ def generateOutput(chord_string):
 
         print("Saving improv.mid")
         print(mid.length)
-        mid.save("tmp/improv.mid")
+        mid.save(APP_ROOT + "/tmp/improv.mid")
         print "generated midi"
 
 def determinechord(notes_list):
