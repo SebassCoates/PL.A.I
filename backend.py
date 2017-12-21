@@ -88,7 +88,7 @@ def generateOutput(chord_string):
         if not os.path.exists("app/tmp"):
             os.makedirs("app/tmp")
 
-        chordCounter += 1
+        chordCount += 1
         mid.save("app/tmp/improv.mid" + str(chordCount))
         print "generated midi"
 
