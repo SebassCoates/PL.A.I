@@ -35,6 +35,7 @@ def getNoteEvent(note):
         return to_return
 
 def generateOutput(chord_string):
+        print "generating output"
         output = []
         chord_shift = 0
         if chord_string != "":
@@ -78,8 +79,10 @@ def generateOutput(chord_string):
         print("Saving improv.mid")
         print(mid.length)
         mid.save("www/improv.mid")
+        print "generated midi"
 
 def determinechord(notes_list):
+        print "determining chord"
         targets = [3, 4, 7, 10, 11]
         hits_hash = {}
         reduced = []
@@ -109,5 +112,7 @@ def determinechord(notes_list):
                 if len(hits_hash[key]) > max_value:
                         max_key = key;
                         max_value = len(hits_hash[key])
+
+        print "done determining chord"
 
         return str(max_key) + ':' + str(int(3 in hits_hash[max_key])) + ':' + str(int(10 in hits_hash[max_key]))
