@@ -5,7 +5,7 @@
 
 .hero {
 	background-color: aqua;
-	height: 80vh;
+	height: 100vh;
 	width: 100vw;
 	background-image: url('Hero_ImageAsset3.svg');
 	background-size: cover;
