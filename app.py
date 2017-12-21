@@ -16,7 +16,6 @@ import io
 from flask_cors import CORS
 import backend
 import json
-from backend import mid
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 # this directory contains the projects that can be accessed by the user

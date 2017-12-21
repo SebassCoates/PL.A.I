@@ -2,6 +2,7 @@ import markovify
 import time
 from mido import Message, MidiFile, MidiTrack
 import  random as rand
+import os
 
 queue = []
 mid = MidiFile()
