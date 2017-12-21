@@ -16,6 +16,7 @@ import io
 from flask_cors import CORS
 import backend
 import json
+from backend import mid
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 # this directory contains the projects that can be accessed by the user
@@ -36,8 +37,6 @@ def index():
 def processNote():
     chordString = backend.getNoteEvent((request.form["note"]))
     if chordString != None:
-    	root_dir = os.path.dirname(os.getcwd())
-    	open(os.path.join(root_dir, 'www') + "improv.mid", 'w').close()
         backend.generateOutput(chordString)
        	return "CLICK THAT!!!"
 
@@ -47,10 +46,10 @@ def processNote():
 @app.route('/improv.mid')
 def renderMidi():
 	root_dir = os.path.dirname(os.getcwd())
-   	return send_from_directory(os.path.join(root_dir, 'www'), "improv.mid")
+   	return mid 
 
 	#app = Flask(__name__, static_url_path='')
-	#return app.send_static_file('improv.mid')
+	return app.send_static_file('tmp/improv.mid')
 	#return send_from_directory('improv.mid', './')
 
 if __name__ == '__main__':

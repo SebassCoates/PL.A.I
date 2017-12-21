@@ -4,6 +4,7 @@ from mido import Message, MidiFile, MidiTrack
 import  random as rand
 
 queue = []
+mid = MidiFile()
 
 last_time = 0
 
@@ -78,7 +79,7 @@ def generateOutput(chord_string):
 
         print("Saving improv.mid")
         print(mid.length)
-        mid.save("www/improv.mid")
+        mid.save("tmp/improv.mid")
         print "generated midi"
 
 def determinechord(notes_list):
