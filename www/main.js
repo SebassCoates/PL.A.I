@@ -44,6 +44,7 @@ function onMIDIFailure(error) {
 }
 
 function playImprov() {
+    console.log("playImprov() called")
     MIDI.Player.loadFile("/improv.mid", function() {
         console.log("starting playback")
         MIDI.Player.start
