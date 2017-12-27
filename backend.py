@@ -54,7 +54,7 @@ def generateOutput(chord_string):
 
         mid = MidiFile()
         track = MidiTrack()
-        track.append(MetaMessage('instrument_name', name=chr(0)))#accoustic grand piano
+        #track.append(MetaMessage('instrument_name', name=chr(1)))#accoustic grand piano
         #track.append(MetaMessage('channel_prefix', channel=1))
 
         counter = 0
