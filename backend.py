@@ -95,8 +95,9 @@ def generateOutput(chord_string):
 
         mid.save("app/tmp/improv.mid")
         """
+        print output
         f = open("../tmp/improv.mid", "w")
-        f.write(output)
+        f.write(str(output))
         print "generated midi"
 
 def determinechord(notes_list):
