@@ -83,6 +83,8 @@ def generateOutput(chord_string):
                 #        print("breaking")
                 #        break;
 
+        track.append(MetaMessage('end_of_track'))
+
         mid.tracks.append(track)
 
         print("Saving improv.mid")
