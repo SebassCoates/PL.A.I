@@ -15,7 +15,7 @@ function onMIDISuccess(midiAccess) {
 
     //setup Midi library
     MIDI.loadPlugin({
-        soundfontUrl: "./soundfont/",
+        soundfontUrl: "www/soundfont/",
         instrument: "acoustic_grand_piano",
         onprogress: function(state, progress) {
             console.log(state, progress);
