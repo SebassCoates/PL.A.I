@@ -54,6 +54,8 @@ def generateOutput(chord_string):
 
         mid = MidiFile()
         track = MidiTrack()
+        track.append(Message(instrument_name=1))
+
         counter = 0
         numskips = rand.randint(len(output) / 4, 3 * len(output) / 4)
         print("NUM SKIPS IS " + str(numskips))
