@@ -108,7 +108,12 @@ midi.setAnimation = function(callback) {
 
 midi.loadMidiFile = function(onsuccess, onprogress, onerror) {
 	try {
+		console.log(midi.currentData)
+		console.log(midi.timeWarp)
+		console.log(midi.BPM)
+		console.log(MidiFile(midi.currentData))
 		midi.replayer = new Replayer(MidiFile(midi.currentData), midi.timeWarp, null, midi.BPM);
+		console.log(midi.replayer)
 		midi.data = midi.replayer.getData();
 		midi.endTime = getLength();
 		///
