@@ -12,6 +12,23 @@ function onLoad(){
 }
 // midi functions
 function onMIDISuccess(midiAccess) {
+
+    //setup Midi library
+    window.onload = function () {
+        MIDI.loadPlugin({
+            soundfontUrl: "./soundfont/",
+            instrument: "acoustic_grand_piano",
+            onprogress: function(state, progress) {
+                console.log(state, progress);
+            },
+            onsuccess: function() {
+                console.log('done loading midi library')
+            }
+        });
+    };
+
+
+
     // when we get a succesful response, run this code
     midi = midiAccess; // this is our raw MIDI data, inputs, outputs, and sysex status
 
