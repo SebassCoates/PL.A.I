@@ -61,7 +61,7 @@ function playImprov() {
     req.onreadystatechange = function() {
         if (req.readyState== 4 && req.status == 200) {
             mididata = req.responseText;
-            
+            mididata = mididata.split(',')
             for (var i = 0; i < mididata.length; i++) {
                 console.log(mididata[i])
             } 
