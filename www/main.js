@@ -59,7 +59,7 @@ function playImprov() {
     req.send();
 
     chord_shift = 0 //GET THIS FROM SERVER EVENTUALLY
-
+    delay = 0
     req.onreadystatechange = function() {
         if (req.readyState== 4 && req.status == 200) {
             mididata = req.responseText;
@@ -71,13 +71,13 @@ function playImprov() {
                 console.log(noteValues[0])
                 console.log(noteValues[1])
                 if (parseInt(noteValues[0]) + parseInt(chord_shift) <= 127) {
-                    var delay = 0; // play one note every quarter second
                     var note = parseInt(noteValues[0]); // the MIDI note
                     var velocity = 100; // how hard the note hits
                     // play the note
                     MIDI.setVolume(0, 100);
                     MIDI.noteOn(0, note, velocity, delay);
                     MIDI.noteOff(0, note, delay + 0.75);
+                    delay += 0.75
                 }
             } 
         }
