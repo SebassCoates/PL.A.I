@@ -1,6 +1,6 @@
 import markovify
 import time
-from mido import Message, MidiFile, MidiTrack
+from mido import Message, MetaMessage, MidiFile, MidiTrack
 import  random as rand
 import os
 
@@ -54,7 +54,7 @@ def generateOutput(chord_string):
 
         mid = MidiFile()
         track = MidiTrack()
-        track.append(Message('instrument_name', name='acoustic_grand_piano'))#accoustic grand piano
+        track.append(MetaMessage('instrument_name', name='acoustic_grand_piano'))#accoustic grand piano
 
         counter = 0
         numskips = rand.randint(len(output) / 4, 3 * len(output) / 4)
