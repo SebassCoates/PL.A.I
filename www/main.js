@@ -47,7 +47,7 @@ function playImprov() {
     console.log("playImprov() called")
     MIDI.Player.loadFile("/improv.mid", function() {
         console.log("starting playback")
-        MIDI.Player.start
+        MIDI.Player.start()
     });
 
     //MIDIjs.play('/improv.mid');
