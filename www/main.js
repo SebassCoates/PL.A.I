@@ -53,7 +53,7 @@ function playImprov() {
         console.log(error)
     });*/
    
-    var url = "plai.herokuapp.com/improv.mid";
+    var url = "improv.mid";
     var req = new XMLHttpRequest();
     req.open("GET",url,true);
     req.send();
