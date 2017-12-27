@@ -14,18 +14,16 @@ function onLoad(){
 function onMIDISuccess(midiAccess) {
 
     //setup Midi library
-    window.onload = function () {
-        MIDI.loadPlugin({
-            soundfontUrl: "./soundfont/",
-            instrument: "acoustic_grand_piano",
-            onprogress: function(state, progress) {
-                console.log(state, progress);
-            },
-            onsuccess: function() {
-                console.log('done loading midi library')
-            }
-        });
-    };
+    MIDI.loadPlugin({
+        soundfontUrl: "./soundfont/",
+        instrument: "acoustic_grand_piano",
+        onprogress: function(state, progress) {
+            console.log(state, progress);
+        },
+        onsuccess: function() {
+            console.log('done loading midi library')
+        }
+    });
 
 
 
