@@ -76,8 +76,8 @@ function playImprov() {
                     // play the note
                     MIDI.setVolume(0, 100);
                     MIDI.noteOn(0, note, velocity, delay);
-                    MIDI.noteOff(0, note, delay + 0.75);
-                    delay += 0.75
+                    MIDI.noteOff(0, note, delay + 1/parseInt(noteValues[1]));
+                    delay += 1/parseInt(noteValues[1])
                 }
             } 
         }
