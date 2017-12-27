@@ -70,9 +70,9 @@ function playImprov() {
                 noteValues = note.split('x')
                 console.log(noteValues[0])
                 console.log(noteValues[1])
-                if (int(noteValues[0]) + int(chord_shift) <= 127) {
+                if (parseInt(noteValues[0]) + parseInt(chord_shift) <= 127) {
                     var delay = 0; // play one note every quarter second
-                    var note = int(noteValues[0]); // the MIDI note
+                    var note = parseInt(noteValues[0]); // the MIDI note
                     var velocity = 100; // how hard the note hits
                     // play the note
                     MIDI.setVolume(0, 100);
