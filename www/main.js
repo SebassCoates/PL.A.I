@@ -61,7 +61,10 @@ function playImprov() {
     req.onreadystatechange = function() {
         if (req.readyState== 4 && req.status == 200) {
             mididata = req.responseText;
-            console.log(mididata)
+            
+            for (var i = 0; i < mididata.length; i++) {
+                console.log(midiata[i])
+            } 
         }
      }
 
