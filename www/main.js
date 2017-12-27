@@ -44,6 +44,10 @@ function onMIDIFailure(error) {
 }
 
 function playImprov() {
+    MIDI.Player.loadFile('/improv.mid', function() {
+        MIDI.Player.start();
+    })
+
     MIDIjs.play('/improv.mid');
 }
 
