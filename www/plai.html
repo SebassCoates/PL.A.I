@@ -16,6 +16,15 @@
 	  <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
 </head>
 
+<script>
+window.onload = function () {
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "acoustic_grand_piano",
+	});
+};
+</script>
+
 <body onLoad="onLoad()">
 	<div class="hero"> </div>
 	<div class="container-fluid">
