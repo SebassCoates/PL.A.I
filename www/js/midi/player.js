@@ -307,7 +307,7 @@ var startAudio = function(currentTime, fromCache, onsuccess) {
 			continue;
 		}
 		///
-		event.instrument = 0
+		event.instrument = 1;
 		console.log(event)
 		var channelId = event.channel;
 		var channel = MIDI.channels[channelId];
