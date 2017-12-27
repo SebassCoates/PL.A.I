@@ -64,7 +64,7 @@ function playImprov() {
             mididata = mididata.split(',')
             for (var i = 0; i < mididata.length; i++) {
                 note = mididata[i]
-                note = note.slice(3)
+                note = note.slice(3, note.length - 1)
                 console.log(note)
             } 
         }
