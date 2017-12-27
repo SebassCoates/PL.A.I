@@ -55,6 +55,7 @@ def generateOutput(chord_string):
         mid = MidiFile()
         track = MidiTrack()
         track.append(MetaMessage('instrument_name', name=chr(0)))#accoustic grand piano
+        track.append(MetaMessage('channel_prefix', channel=1))
 
         counter = 0
         numskips = rand.randint(len(output) / 4, 3 * len(output) / 4)
