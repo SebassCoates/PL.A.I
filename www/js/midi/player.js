@@ -308,7 +308,9 @@ var startAudio = function(currentTime, fromCache, onsuccess) {
 		}
 		///
 		var channelId = event.channel;
+		print(channelId)
 		var channel = MIDI.channels[channelId];
+		print(channel)
 		var delay = ctx.currentTime + ((currentTime + foffset + midi.startDelay) / 1000);
 		var queueTime = queuedTime - offset + midi.startDelay;
 		switch (event.subtype) {
