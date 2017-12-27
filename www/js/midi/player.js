@@ -258,6 +258,7 @@ var getNow = function() {
 };
 
 var startAudio = function(currentTime, fromCache, onsuccess) {
+	console.log(currentTime)
 	if (!midi.replayer) {
 		return;
 	}
