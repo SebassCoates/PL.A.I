@@ -28,6 +28,10 @@ function onMIDIFailure(error) {
     console.log("No access to MIDI devices or your browser doesn't support WebMIDI API. Please use WebMIDIAPIShim " + error);
 }
 
+function playImprov() {
+    MIDIjs.play('/improv.mid');
+}
+
 function onMIDIMessage(message) {
     data = message.data; // this gives us our [command/channel, note, velocity] data.
     //console.log('MIDI data', data); // MIDI data [144, 63, 73]
