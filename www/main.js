@@ -62,10 +62,12 @@ function playImprov() {
         if (req.readyState== 4 && req.status == 200) {
             mididata = req.responseText;
             mididata = mididata.split(',')
-            for (var i = 0; i < mididata.length; i++) {
+            for (var i = 0; i < mididata.length - 1; i++) { //last is gargage
                 note = mididata[i]
                 note = note.slice(3, note.length - 1)
-                console.log(note)
+                noteValues = note.split('x')
+                console.log(noteValues[0])
+                console.log(noteValues[1])
             } 
         }
      }
