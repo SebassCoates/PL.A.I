@@ -52,6 +52,16 @@ function playImprov() {
         console.log("ERROR:")
         console.log(error)
     });*/
+    fh = fopen('/improv.mid', 0); // Open the file for reading 
+    if(fh!=-1) // If the file has been successfully opened 
+    { 
+        length = flength(fh);         // Get the length of the file     
+        str = fread(fh, length);     // Read in the entire file 
+        fclose(fh);                    // Close the file 
+         
+    // Display the contents of the file     
+        console.log(str);     
+    }
     var delay = 0; // play one note every quarter second
     var note = 50; // the MIDI note
     var velocity = 127; // how hard the note hits

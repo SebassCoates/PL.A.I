@@ -50,7 +50,7 @@ def generateOutput(chord_string):
                 output = (major_model.make_sentence(test_output = False)).split()
         else:
                 output = (minor_model.make_sentence(test_output = False)).split()
-        
+        """
 
         mid = MidiFile()
         track = MidiTrack()
@@ -94,6 +94,9 @@ def generateOutput(chord_string):
             os.makedirs("app/tmp")
 
         mid.save("app/tmp/improv.mid")
+        """
+        f = open("app/tmp/improv.mid", "w")
+        f.write(output)
         print "generated midi"
 
 def determinechord(notes_list):
