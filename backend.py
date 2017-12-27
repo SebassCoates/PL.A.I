@@ -72,11 +72,11 @@ def generateOutput(chord_string):
 
                 track.append(Message('program_change', program=12, time=0))
                 if int(note_value) + int(chord_shift) > 127:
-                        track.append(Message('note_on', note=0, velocity=0, time=0))
-                        track.append(Message('note_off', note=0, velocity=0, time= 0/int(duration)))
+                        track.append(Message('note_on', note=0, velocity=0, time=0), channel=0)
+                        track.append(Message('note_off', note=0, velocity=0, time= 0/int(duration), channel=0))
                 else:
-                        track.append(Message('note_on', note=int(note_value) + int(chord_shift), velocity=100, time=0))
-                        track.append(Message('note_off', note=int(note_value) + int(chord_shift), velocity=100, time= 650/int(duration))) 
+                        track.append(Message('note_on', note=int(note_value) + int(chord_shift), velocity=100, time=0, channel=0))
+                        track.append(Message('note_off', note=int(note_value) + int(chord_shift), velocity=100, time= 650/int(duration), channel=0)) 
 
                 #counter = counter + 1
                 #if counter >= 25 + numskips:
