@@ -63,7 +63,7 @@ function playImprov() {
             mididata = req.responseText;
             
             for (var i = 0; i < mididata.length; i++) {
-                console.log(midiata[i])
+                console.log(mididata[i])
             } 
         }
      }
