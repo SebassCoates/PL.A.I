@@ -63,9 +63,9 @@ def generateOutput(chord_string):
                         (note_value, duration) = note.split('x')
                 except:
                         continue
-                if counter < numskips:
-                        counter = counter + 1
-                        continue
+                #if counter < numskips:
+                #        counter = counter + 1
+                #        continue
 
                 track.append(Message('program_change', program=12, time=0))
                 if int(note_value) + int(chord_shift) > 127:
@@ -75,10 +75,10 @@ def generateOutput(chord_string):
                         track.append(Message('note_on', note=int(note_value) + int(chord_shift), velocity=100, time=0))
                         track.append(Message('note_off', note=int(note_value) + int(chord_shift), velocity=100, time= 650/int(duration))) 
 
-                counter = counter + 1
-                if counter >= 25 + numskips:
-                        print("breaking")
-                        break;
+                #counter = counter + 1
+                #if counter >= 25 + numskips:
+                #        print("breaking")
+                #        break;
 
         mid.tracks.append(track)
 
