@@ -12,6 +12,13 @@ function onLoad(){
 }
 // midi functions
 function onMIDISuccess(midiAccess) {
+    console.log("loading acoustic_grand_piano")
+    MIDI.loadPlugin({ //load midi plugin and set default sound to piano
+        instrument: "acoustic_grand_piano"
+    });
+    console.log("done loading acoustic_grand_piano")
+
+
     // when we get a succesful response, run this code
     midi = midiAccess; // this is our raw MIDI data, inputs, outputs, and sysex status
 
